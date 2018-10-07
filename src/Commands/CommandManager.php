@@ -30,7 +30,17 @@ class CommandManager
     {
 
         $this->command = $command[0]; //make
-        $this->className = $command[1]; //controller
+
+        // print_r($name);
+        // exit;
+
+        if ($name == '-h' || $name == 'help' && !isset($command[1])) {
+            echo " - Controller\n - Model\n - Helper\n - Facade\n - Command\n";
+            exit;
+        }
+        else {
+            $this->className = $command[1];
+        }
 
         $this->name = str_replace('.', '/', $name);
         $this->options = $options;
@@ -46,12 +56,11 @@ class CommandManager
                 return $this->runCustomCommands();
             else
                 return $this->run();
-        }
-        else{
+        } else {
             return $this->run();
         }
 
-       
+
 
     }
 
