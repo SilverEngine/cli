@@ -4,7 +4,6 @@ namespace Cli;
 
 trait File
 {
-    // use Message;
 
     /**
      * createDirIfNorExists
