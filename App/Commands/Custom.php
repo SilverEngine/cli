@@ -1,6 +1,6 @@
 <?php
 
-class Custom extends Commands;
+class Custom extends Commands
 {
 
 }
