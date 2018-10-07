@@ -19,6 +19,7 @@ class Cli
      */
     public function __construct($input)
     {
+
         if (!isset($input[0])) {
             echo "\n Welcome to SilverEngine framework \n\n";
             echo " - try use 'php silver help' \n";
