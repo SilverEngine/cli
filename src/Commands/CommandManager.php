@@ -2,7 +2,7 @@
 
 namespace Cli\Commands;
 
-use Cli\File;
+use Cli\Traits\File;
 
 class CommandManager
 {

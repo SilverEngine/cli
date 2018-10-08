@@ -1,6 +1,6 @@
 <?php
 
-namespace Cli;
+namespace Cli\Traits;
 
 trait File
 {
@@ -60,7 +60,7 @@ trait File
     {
         if ($force) {
             if (!copy($template, $destination)) {
-                echo "failed to copy $file...\n";
+                exit("failed to copy $template...\n");
             }
         } else {
             if (file_exists($destination)) {
