@@ -117,6 +117,7 @@ class CommandManager
 
                 if (in_array('-h', $this->options) || in_array('-help', $this->options)) {
                     print_r([ucfirst($this->command) . ': options' => $class->help()]);
+                    exit;
                 } else {
                     return $this->executeOptions($class);
                 }
@@ -154,6 +155,7 @@ class CommandManager
 
                 if (in_array('-h', $this->options) || in_array('-help', $this->options)) {
                     print_r([ucfirst($this->command) . ': options' => $class->help()]);
+                    exit;
                 } else {
                     return $this->executeOptions($class);
                 }
