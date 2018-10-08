@@ -1,6 +1,6 @@
 <?php
 
-namespace Cli;
+namespace Cli\Traits;
 
 trait Message
 {
@@ -14,8 +14,12 @@ trait Message
     public function success($message, string $file = null)
     {
         if (is_array($message)) {
-            foreach ($message as $m) {
-                echo "Success: {$m} \n";
+            if (TEST) {
+                foreach ($message as $m) {
+                    echo $m . "\n";
+                }
+            } else {
+                echo $message[0];
             }
         } else {
             echo "Success: {$message} \n";
@@ -32,8 +36,12 @@ trait Message
     public function error($message, string $file = null)
     {
         if (is_array($message)) {
-            foreach ($message as $m) {
-                echo $m . '\\n';
+            if (TEST) {
+                foreach ($message as $m) {
+                    echo $m . "\n";
+                }
+            } else {
+                echo $message[0];
             }
         } else {
             echo "Error: {$message} \n";
@@ -50,8 +58,12 @@ trait Message
     public function warning($message, string $file = null)
     {
         if (is_array($message)) {
-            foreach ($message as $m) {
-                echo $m . "\n";
+            if (TEST) {
+                foreach ($message as $m) {
+                    echo $m . "\n";
+                }
+            } else {
+                echo $message[0];
             }
         } else {
             echo "Warning: {$message} \n";

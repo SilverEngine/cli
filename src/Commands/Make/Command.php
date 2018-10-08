@@ -2,8 +2,8 @@
 
 namespace Cli\Commands\Make;
 
-use Cli\File;
-use Cli\Message;
+use Cli\Traits\File;
+use Cli\Traits\Message;
 
 class Command
 {
@@ -60,11 +60,11 @@ class Command
      */
     private function create($force = false)
     {
-        $path = ROOT . 'App' . DS;
+        $path = DESTINATION . 'App' . DS;
         $this->createDirIfNorExists($this->destinationFolderName, $path);
 
-        $template = ROOT . 'App' . DS . 'Templates' . DS . ucfirst($this->className) . '.php';
-        $destination = ROOT . 'App' . DS . ucfirst($this->className).'s' . DS . ucfirst($this->name) . '.php';
+        $template = TEMPLATE . DS . ucfirst($this->className) . '.php';
+        $destination = DESTINATION . 'App' . DS . ucfirst($this->className).'s' . DS . ucfirst($this->name) . '.php';
 
         $this->createFile($destination, $template, $force);
     }
@@ -78,7 +78,7 @@ class Command
      */
     private function delete($force = false)
     {
-        $destination = ROOT . 'App' . DS . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . '.php';
+        $destination = DESTINATION . 'App' . DS . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . '.php';
         $this->deleteFile($destination, $force);
     }
 

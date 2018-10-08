@@ -20,7 +20,7 @@ class Cli
     public function __construct($input)
     {
 
-        if (!isset($input[0])) {
+        if (!isset($input[0]) || !isset($input[1])) {
             echo "\n Welcome to SilverEngine framework \n\n";
             echo " - try use 'php silver help' \n";
             // echo "\n ----- \n";
@@ -58,10 +58,10 @@ class Cli
 
     private function ExplodeName()
     {
+        if (empty($this->input[1]))
+            exit("\nThe name is empty, please add the name!\n");
+
         $name = $this->input[1];
-
-        // dd($name);
-
         return $name;
     }
 
