@@ -45,12 +45,10 @@ class CommandManager
         $this->name = str_replace('.', '/', $name);
         $this->options = $options;
 
-        //TODO: find way to get files from App/Commands  and vendor/silverengine/cli/src/Commands
-
         $this->fileName = APP . "Commands" . DS . ucfirst($command[0]) . DS . ucfirst($command[1]) . EXT;
         $class = ROOT . "App" . DS . 'Commands' . DS . ucfirst($command[0]) . DS . ucfirst($command[1]);
         $this->namespace = "Cli\\Commands\\" . ucfirst($command[0]) . "\\" . ucfirst($command[1]);
-        $path = ROOT . 'App' . DS . 'Commands'.DS;
+        $path = ROOT . 'App' . DS . 'Commands' . DS;
 
         // $this->path = $path = DESTINATION . 'App' . DS . 'Commands';
 
