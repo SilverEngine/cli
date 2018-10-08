@@ -50,7 +50,7 @@ class CommandManager
         $this->fileName = APP . "Commands" . DS . ucfirst($command[0]) . DS . ucfirst($command[1]) . EXT;
         $class = ROOT . "App" . DS . 'Commands' . DS . ucfirst($command[0]) . DS . ucfirst($command[1]);
         $this->namespace = "Cli\\Commands\\" . ucfirst($command[0]) . "\\" . ucfirst($command[1]);
-        $path = ROOT . 'App' . DS . 'Commands';
+        $path = ROOT . 'App' . DS . 'Commands'.DS;
 
         // $this->path = $path = DESTINATION . 'App' . DS . 'Commands';
 
