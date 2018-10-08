@@ -15,20 +15,29 @@ define('PATH', dirname(__FILE__) . DS);
 /*               CONFIG                  */
 /*****************************************/
 
-define('TEST', true);
+define('TEST', false);
+
+//debug prod
+// if (TEST) {
+//     define('ROOT', PATH . 'vendor' . DS . 'silverengine' . DS . 'cli' . DS);
+//     // define('ROOT', dirname(__FILE__) . DS);
+// } else {
+//     define('ROOT', dirname(__FILE__) . DS);
+//     // define('ROOT', PATH . 'vendor' . DS . 'silverengine' . DS . 'cli' . DS);
+// }
 
 if (TEST) {
+
     define('ROOT', dirname(__FILE__) . DS);
 } else {
+
     define('ROOT', PATH . 'vendor' . DS . 'silverengine' . DS . 'cli' . DS);
 }
 
-define('TEMPLATE', ROOT . 'App' . DS . 'Templates');
-define('DESTINATION', ROOT);
+define('TEMPLATE', ROOT . 'App' . DS . 'Templates' . DS);
+define('DESTINATION', dirname(__FILE__) . DS);
 
 /*****************************************/
-
-
 
 
 // var_dump(ROOT);
@@ -67,9 +76,6 @@ if (!function_exists('ndd')) {
         }
     }
 }
-
-// dd(ROOT);
-// dd(DESTINATION);
 
 // dd(APP . 'Cli' . EXT);
 
