@@ -30,10 +30,14 @@ trait File
      *
      * @return void
      */
-    public function isDirEmpty(string $dir)
+    public function isDirEmpty(string $name, string $path)
     {
-        $handle = opendir($dir);
-        // var_dump($handle);
+        if (!is_dir($path)) {
+            $this->createDirIfNorExists($name, $path);
+        }
+
+        $handle = opendir($path);
+
         while (false !== ($entry = readdir($handle))) {
             if ($entry != "." && $entry != "..") {
                 return true;
@@ -62,8 +66,8 @@ trait File
             if (file_exists($destination)) {
                 return $this->warning(
                     [
-                        'File already exists! If you want to override please add -f [FORCE]',
-                        'path: ' . $destination
+                        "File already exists! If you want to override please add -f [FORCE]",
+                        "path: " . $destination
                     ]
                 );
             }
@@ -76,7 +80,10 @@ trait File
 
         }
 
-        return $this->success('File was created');
+        return $this->success([
+            "File was Created",
+            "path: " . $destination
+        ]);
     }
 
     /**
@@ -95,6 +102,9 @@ trait File
             if (is_file($destination))
             unlink($destination);
 
-        return $this->success('File was deleted');
+        return $this->success([
+            "File was deleted",  
+            "path: " . $destination
+        ]);
     }
 }

@@ -51,7 +51,7 @@ trait Message
     {
         if (is_array($message)) {
             foreach ($message as $m) {
-                echo $m . '\n';
+                echo $m . "\n";
             }
         } else {
             echo "Warning: {$message} \n";

@@ -9,7 +9,16 @@ define('EXT', '.php');
 define('DS', DIRECTORY_SEPARATOR);
 
 define('ROOT', dirname(__FILE__) . DS);
+define('DESTINATION', dirname(__FILE__) . DS);
+// define('DESTINATION', '../../App'.DS);
 define('APP', ROOT . 'src' . DS);
+
+/**
+ * temp config for the framework path
+ */
+define('TEST', true);
+
+// exit(DESTINATION);
 
 /**
  * @param $data
