@@ -5,7 +5,7 @@ namespace Cli\Commands\Make;
 use Cli\Traits\File;
 use Cli\Traits\Message;
 
-class Controller
+class Migration
 {
 
     use File;
@@ -16,7 +16,7 @@ class Controller
     private $options = [];
     private $path;
 
-    private $destinationFolderName = 'Controllers';
+    private $destinationFolderName = 'Migration';
 
     /**
      * __construct
@@ -63,8 +63,8 @@ class Controller
         $this->createDirIfNorExists($this->destinationFolderName, $this->path);
         // var_dump(TEMPLATE);
         // exit;
-        $template = TEMPLATE . DS . ucfirst($this->className) . '.php';
-        $destination = $this->path . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . 'Controller.php';
+        $template = TEMPLATE . ucfirst($this->className) . '.php';
+        $destination = $this->path . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . '.php';
 
         $this->createFile($destination, $template, $force);
     }
@@ -78,7 +78,7 @@ class Controller
      */
     private function delete($force = false)
     {
-        $destination = $this->path . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . 'Controller.php';
+        $destination = $this->path . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . '.php';
         $this->deleteFile($destination, $force);
     }
 

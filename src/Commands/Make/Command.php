@@ -14,6 +14,7 @@ class Command
     private $name;
     private $className;
     private $options = [];
+    private $path;
 
     private $destinationFolderName = 'Commands';
 
@@ -27,10 +28,10 @@ class Command
      */
     public function __construct(string $className, string $commandName, array $options = [])
     {
-        // exit(1);
         $this->className = $className;
         $this->name = $commandName;
         $this->options = $options;
+        $this->path = DESTINATION . 'App' . DS;
     }
 
     /**
@@ -42,7 +43,6 @@ class Command
      */
     public function run(array $options)
     {
-        
         if (in_array('-d', $options))
             return $this->delete();
         else if (in_array('-f', $options) || in_array('-force', $options))
@@ -60,11 +60,11 @@ class Command
      */
     private function create($force = false)
     {
-        $path = DESTINATION . 'App' . DS;
-        $this->createDirIfNorExists($this->destinationFolderName, $path);
-
-        $template = TEMPLATE . DS . ucfirst($this->className) . '.php';
-        $destination = DESTINATION . 'App' . DS . ucfirst($this->className).'s' . DS . ucfirst($this->name) . '.php';
+        $this->createDirIfNorExists($this->destinationFolderName, $this->path);
+        // var_dump(TEMPLATE);
+        // exit;
+        $template = TEMPLATE . ucfirst($this->className) . '.php';
+        $destination = $this->path . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . '.php';
 
         $this->createFile($destination, $template, $force);
     }
@@ -78,7 +78,7 @@ class Command
      */
     private function delete($force = false)
     {
-        $destination = DESTINATION . 'App' . DS . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . '.php';
+        $destination = $this->path . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . '.php';
         $this->deleteFile($destination, $force);
     }
 

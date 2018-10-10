@@ -58,31 +58,22 @@ trait File
      */
     protected function createFile($destination, $template, $force = false)
     {
-        if ($force) {
-            if (!copy($template, $destination)) {
-                exit("failed to copy $template...\n");
-            }
-        } else {
-            if (file_exists($destination)) {
-                return $this->warning(
-                    [
-                        "File already exists! If you want to override please add -f [FORCE]",
-                        "path: " . $destination
-                    ]
-                );
-            }
+        if (file_exists($destination) && $force != true) {
+            return $this->warning(
+                [
+                    "File already exists! If you want to override please add -f [FORCE]",
+                    "path: " . $destination
+                ]
+            );
+        }
 
-            // var_dump($destination);
-            // var_dump($template);
-            // exit;
-
-            file_put_contents($destination, $template);
-
+        if (!copy($template, $destination)) {
+            exit("failed to copy $template...\n");
         }
 
         return $this->success([
             "File was Created",
-            "path: " . $destination
+            "Path: " . $destination
         ]);
     }
 
@@ -103,7 +94,7 @@ trait File
             unlink($destination);
 
         return $this->success([
-            "File was deleted",  
+            "File was deleted",
             "path: " . $destination
         ]);
     }

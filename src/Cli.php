@@ -31,7 +31,7 @@ class Cli
          * Command example:  silver make controller <name> <option>
          * - Silver = [0]
          * - Make = [1]
-         * - Cntroller = [2]
+         * - Controller = [2]
          * - Options [3,4,...]
          */
         // dd($input);
