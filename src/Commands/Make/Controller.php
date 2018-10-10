@@ -5,7 +5,6 @@ namespace Cli\Commands\Make;
 use Cli\Traits\File;
 use Cli\Traits\Message;
 
-// class Controller implements Command   -->  error: Fatal error: Declaration of Silver\Cli\Commands\Make\Controller::run($commandName, $options = Array) must be compatible with Silver\Interfaces\Command::run(string $commandName, array $options) in C:\xampp\htdocs\yt\cli\src\Commands\Make\Controller.php on line 7
 class Controller
 {
 
@@ -15,6 +14,7 @@ class Controller
     private $name;
     private $className;
     private $options = [];
+    private $path;
 
     private $destinationFolderName = 'Controllers';
 
@@ -31,6 +31,7 @@ class Controller
         $this->className = $className;
         $this->name = $commandName;
         $this->options = $options;
+        $this->path = DESTINATION . 'App' . DS;
     }
 
     /**
@@ -59,13 +60,11 @@ class Controller
      */
     private function create($force = false)
     {
-        $path = DESTINATION . 'App' . DS;
-    
-        $this->createDirIfNorExists($this->destinationFolderName, $path);
+        $this->createDirIfNorExists($this->destinationFolderName, $this->path);
         // var_dump(TEMPLATE);
         // exit;
         $template = TEMPLATE . DS . ucfirst($this->className) . '.php';
-        $destination = DESTINATION . 'App' . DS . ucfirst($this->className).'s' . DS . ucfirst($this->name) . 'Controller.php';
+        $destination = $this->path . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . 'Controller.php';
 
         $this->createFile($destination, $template, $force);
     }
@@ -79,7 +78,7 @@ class Controller
      */
     private function delete($force = false)
     {
-        $destination = DESTINATION . 'App' . DS . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . 'Controller.php';
+        $destination = $this->path . ucfirst($this->className) . 's' . DS . ucfirst($this->name) . 'Controller.php';
         $this->deleteFile($destination, $force);
     }
 
