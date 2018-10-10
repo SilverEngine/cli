@@ -28,7 +28,9 @@ This module need php v7.1 or up
 
 ### Commands
 
-> php silver make:controller <name> <options>
+```php
+php silver make:controller <name> <options>
+```
 
 ### options
 
