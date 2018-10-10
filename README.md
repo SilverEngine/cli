@@ -21,6 +21,22 @@ This module need php v7.1 or up
 
 > Composer update
 
+## Commands
+
+This module need php v7.1 or up
+
+
+### Commands
+
+> php silver make:controller
+
+### options
+
+- -h = help
+- -d = delete
+- -f = force
+
+
 
 ## Contributing
 
