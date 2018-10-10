@@ -5,7 +5,7 @@ namespace Cli\Commands\Make;
 use Cli\Traits\File;
 use Cli\Traits\Message;
 
-class Command
+class Migration
 {
 
     use File;
@@ -16,7 +16,7 @@ class Command
     private $options = [];
     private $path;
 
-    private $destinationFolderName = 'Commands';
+    private $destinationFolderName = 'Migration';
 
     /**
      * __construct

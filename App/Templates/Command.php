@@ -5,7 +5,7 @@ namespace Cli\Commands\Make;
 use Cli\File;
 use Cli\Message;
 
-class Controller
+class Command
 {
 
     use File;

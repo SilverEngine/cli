@@ -36,7 +36,15 @@ class CommandManager
         // exit;
 
         if ($name == '-h' || $name == 'help' && !isset($command[1])) {
-            echo " - Controller\n - Model\n - Helper\n - Facade\n - Command\n";
+            echo " 
+            - Controller\n 
+            - Model\n 
+            - Helper\n 
+            - Facade\n 
+            - Command\n 
+            - Migration\n 
+            - Seed\n
+            ";
             exit;
         } else {
             $this->className = $command[1];
@@ -80,7 +88,6 @@ class CommandManager
      */
     private function checkClass(string $path)
     {
-          //TODO: find way to get files from App/Commands  and vendor/silverengine/cli/src/Commands not used yet
         if ($this->isDirEmpty($this->className, $path)) {
             if (class_exists($class)) {
                 return true;
